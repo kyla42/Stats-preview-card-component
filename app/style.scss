@@ -1,0 +1,204 @@
+:root {
+    --mainBackground: hsl(233, 47%, 7%);
+    --cardBackground: hsl(244, 38%, 16%);
+    --accent: rgb(170, 92, 219);
+    --mainHeading: hsl(0, 0%, 100%);
+    --mainParagraph: hsla(0, 0%, 100%, 0.75);
+    --statHeading: hsla(0, 0%, 100%, 0.6);
+    --fontFam_Inter: 'Inter', sans-serif;
+}
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--fontFam_Inter);
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    height: 100vh;
+    color: var(--mainHeading);
+    font-size: 1.5rem;
+    font-family: var(--fontFam_Inter);
+    background-color: var(--mainBackground);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media (max-width: 62.5em) {
+        height: auto;
+    }
+}
+
+h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1.26;
+    letter-spacing: 0.04rem;
+
+    @media (max-width: 62.5em) {
+        font-size: 2.7rem;
+    }
+}
+
+p {
+    padding: 2.5rem 0;
+    color: var(--mainParagraph);
+    line-height: 1.67;
+
+    @media (max-width: 62.5em) {
+        padding: 0;
+    }
+}
+
+.main {
+    max-width: 144rem;
+    max-height: 80rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media (max-width: 62.5em) {
+        min-width: 37.5rem;
+        max-height: 95.6rem;
+    }
+}
+
+.container {
+    width: 111rem;
+    height: 44.6rem;
+    background-color: var(--cardBackground);
+    border-radius: 0.8rem;
+    display: grid;
+    grid-template-columns: 19fr 18fr;
+    grid-row: 1fr;
+    grid-template-areas:
+        "stats img";
+
+    @media (max-width: 62.5em) {
+        min-width: 32.5rem;
+        height: auto;
+        margin: 2.5rem;
+        border-radius: 0 0 0.8rem 0.8rem;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+        grid-template-areas:
+            "img"
+            "stats";
+    }
+
+    .stats {
+        width: 57rem;
+        height: 44.6rem;
+        margin: 0 auto;
+        padding: 7.1rem 0 0 7.2rem;
+        display: flex;
+        flex-direction: column;
+        grid-area: stats;
+
+        @media (max-width: 62.5em) {
+            max-width: 32.5rem;
+            height: auto;
+            padding: 4rem 3rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            row-gap: 2rem;
+            text-align: center;
+            grid-area: stats;
+        }
+
+        &__title,
+        &__para,
+        &__data {
+            max-width: 39rem;
+
+            @media (max-width: 62.5em) {
+                max-width: 32.5rem;
+                margin: 0 auto;
+            }
+        }
+
+        &__title {
+            >span {
+                color: var(--accent);
+            }
+        }
+
+        &__data {
+            padding-top: 4.7rem;
+            display: flex;
+            justify-content: start;
+
+            @media (max-width: 62.5em) {
+                padding-top: 2rem;
+                flex-direction: column;
+                row-gap: 3.5rem;
+            }
+
+            .item {
+                padding-right: 6.3rem;
+                font-size: 2.4rem;
+                font-weight: 700;
+                display: flex;
+                flex-direction: column;
+                row-gap: 0.6rem;
+
+                >span {
+                    font-family: 'Lexend Deca', sans-serif;
+                    color: var(--statHeading);
+                    font-size: 1.3rem;
+                    font-weight: 400;
+                    letter-spacing: 0.03rem;
+                }
+
+                @media (max-width: 62.5em) {
+                    padding: 0;
+                }
+            }
+        }
+    }
+
+    .image {
+        grid-area: img;
+
+        &__pic {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background-image: url(../images/image-header-desktop.jpg);
+            border-radius: 0 0.8rem 0.8rem 0;
+
+            &::after {
+                content: "";
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                border-radius: 0 0.8rem 0.8rem 0;
+                background-color: rgba(87, 8, 133, 0.6);
+            }
+        }
+
+        @media (max-width: 62.5em) {
+            min-width: 32.5rem;
+            min-height: 23.9rem;
+
+            &__pic {
+                width: 100%;
+                height: 100%;
+                background-image: url(../images/image-header-mobile.jpg);
+                background-size: cover;
+                background-repeat: no-repeat;
+                border-radius: 0.8rem 0.8rem 0 0;
+            }
+        }
+    }
+}
